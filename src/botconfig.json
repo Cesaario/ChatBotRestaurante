@@ -1,0 +1,60 @@
+{
+  "categorias": [
+    {
+      "nome": "Salgados",
+      "produtos": [
+        {
+          "nome": "Pão de queijo",
+          "desc": "Pão de queijo feito com queijo.",
+          "preço": 1.99,
+          "adicionais": [
+            {
+              "nome": "Pernil",
+              "valor": 1.0
+            },
+            {
+              "nome": "Goiabada",
+              "valor": 0.5
+            }
+          ]
+        },
+        {
+          "nome": "Coxinha",
+          "desc": "Frango desfiado com bastante catupiry.",
+          "preço": 2.99
+        },
+        {
+          "nome": "Kibe",
+          "desc": "Feito com carne moída de primeira",
+          "preço": 2.99
+        }
+      ]
+    },
+    {
+      "nome": "Bebidas",
+      "produtos": [
+        {
+          "nome": "Coca-Cola",
+          "valor": 2.0
+        },
+        {
+          "nome": "Água",
+          "valor": 1.0
+        }
+      ]
+    },
+    {
+      "nome": "Sobremesas",
+      "produtos": [
+        {
+          "nome": "Brigadeiro",
+          "valor": 1.0
+        },
+        {
+          "nome": "Bolo",
+          "valor": 2.0
+        }
+      ]
+    }
+  ]
+}
