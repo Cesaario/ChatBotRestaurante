@@ -4,7 +4,7 @@ import StageCardapioSelecionado from "./StageCardapioSelecionado";
 import StageInicio from "./StageInicio";
 
 export const StageSolvers: Partial<
-  Record<Stages, (user: string, message: string | null) => void>
+  Record<Stages, (user: string, message?: string) => void>
 > = {
   //TODO: REMOVER PARTIAL QUANDO FINALIZAR
   [Stages.INICIO]: StageInicio,

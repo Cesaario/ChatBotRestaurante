@@ -14,7 +14,7 @@ export const formatMessageWithOptions = (
   return message.replace(PLACEHOLDER_OPTIONS, formatOptions(options));
 };
 
-export const getOptionSelected = (message: string) => {
+export const getOptionSelected = (message?: string) => {
   return Number(message) || null;
 };
 
