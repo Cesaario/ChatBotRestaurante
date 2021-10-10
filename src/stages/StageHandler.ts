@@ -1,8 +1,11 @@
 import { Stages } from "../constants/StagesEnum";
 import { StageOption } from "../interfaces/IStageOptions";
+import StageAdicionarConfirmarProdutos from "./StageAdicionarConfirmarProdutos";
 import StageCardapioSelecionado from "./StageCardapioSelecionado";
 import StageCategoriaSelecionada from "./StageCategoriaSelecionada";
+import StageConfirmarProduto from "./StageConfirmarProduto";
 import StageInicio from "./StageInicio";
+import StageProdutoSelecionado from "./StageProdutoSelecionado";
 
 export const StageSolvers: Partial<
   Record<Stages, (user: string, message?: string) => void>
@@ -11,6 +14,9 @@ export const StageSolvers: Partial<
   [Stages.INICIO]: StageInicio,
   [Stages.CARDAPIO_SELECIONADO]: StageCardapioSelecionado,
   [Stages.CATEGORIA_SELECIONADA]: StageCategoriaSelecionada,
+  [Stages.PRODUTO_SELECIONADO]: StageProdutoSelecionado,
+  [Stages.CONFIRMAR_PRODUTO]: StageConfirmarProduto,
+  [Stages.ADICIONAR_CONFIRMAR_PRODUTOS]: StageAdicionarConfirmarProdutos,
 };
 
 export const StageOptionsShown: Partial<Record<Stages, Set<string>>> = {};

@@ -1,14 +1,29 @@
-import { PLACEHOLDER_OPTIONS } from "../constants/Messages";
+import {
+  PLACEHOLDER_ADICIONAIS,
+  PLACEHOLDER_DETALHES_PRODUTO,
+  PLACEHOLDER_NOME_PRODUTO,
+  PLACEHOLDER_OPTIONS,
+  PLACEHOLDER_RESUMO_CARRINHO,
+  PLACEHOLDER_VALOR,
+} from "../constants/Messages";
 import { client } from "../index";
+import { Cart } from "../interfaces/ICart";
 import { Categoria, Produto } from "../interfaces/IRestauranteConfig";
 
 import { StageOption } from "../interfaces/IStageOptions";
-import { formatCategorias, formatProduto } from "./cardapioUtils";
+import {
+  formatAdicionais,
+  formatCategorias,
+  formatProduto,
+} from "./cardapioUtils";
 
-export const formatOptions = (options: StageOption[]) => {
-  return options
-    .map((option) => `${option.number}) ${option.title}`)
-    .join("\n");
+export const formatOptions = (options: StageOption[], backOption = false) => {
+  const opcoesMapeadas = options.map(
+    (option) => `${option.number}) ${option.title}`
+  );
+  if (backOption) opcoesMapeadas.push("0) Voltar");
+
+  return opcoesMapeadas.join("\n");
 };
 
 export const formatMessageWithStageOptions = (
@@ -38,6 +53,47 @@ export const formatMessageWithProductsOptions = (
     PLACEHOLDER_OPTIONS,
     formatProduto(options, backOption)
   );
+};
+
+export const formatMessageWithProductDetailsAndStageOptions = (
+  message: string,
+  product: Produto,
+  options: StageOption[],
+  backOption = false
+) => {
+  const mensagemFormatada = message
+    .replace(PLACEHOLDER_NOME_PRODUTO, product.nome)
+    .replace(PLACEHOLDER_DETALHES_PRODUTO, product.desc || "")
+    .replace(PLACEHOLDER_OPTIONS, formatOptions(options, backOption));
+  return mensagemFormatada;
+};
+
+export const formatMessageWithProductConfirmationAndStageOptions = (
+  message: string,
+  product: Produto,
+  options: StageOption[],
+  backOption = false
+) => {
+  const mensagemFormatada = message
+    .replace(PLACEHOLDER_NOME_PRODUTO, product.nome)
+    .replace(
+      PLACEHOLDER_ADICIONAIS,
+      formatAdicionais(product.adicionais, false, false)
+    )
+    .replace(PLACEHOLDER_VALOR, "CALCULAR VALOR")
+    .replace(PLACEHOLDER_OPTIONS, formatOptions(options, backOption));
+  return mensagemFormatada;
+};
+
+export const formatMessageWithOrderConfirmationAndStageOptions = (
+  message: string,
+  cart: Cart,
+  options: StageOption[]
+) => {
+  const mensagemFormatada = message
+    .replace(PLACEHOLDER_RESUMO_CARRINHO, "PLACEHOLDER_RESUMO_CARRINHO")
+    .replace(PLACEHOLDER_OPTIONS, formatOptions(options));
+  return mensagemFormatada;
 };
 
 export const getOptionSelected = (message?: string) => {

@@ -1,5 +1,9 @@
 import { restaurante } from "../config/configHandler";
-import { Categoria, Produto } from "../interfaces/IRestauranteConfig";
+import {
+  Adicional,
+  Categoria,
+  Produto,
+} from "../interfaces/IRestauranteConfig";
 
 export const formatCategorias = (
   categorias: Categoria[],
@@ -18,7 +22,30 @@ export const formatProduto = (produtos: Produto[], backOption = false) => {
   if (backOption) categoriasMapeadas.push("0) Voltar");
   return categoriasMapeadas.join("\n");
 };
+export const formatAdicionais = (
+  adicionais: Adicional[] | undefined,
+  options = true,
+  backOption = false
+) => {
+  const adicionaisMapeados =
+    adicionais && adicionais.length > 0
+      ? adicionais.map((adicional, index) => {
+          if (options)
+            return `${index + 1}) ${adicional.nome} (${adicional.valor})`;
+          else return `- ${adicional.nome} (${adicional.valor})`;
+        })
+      : ["Sem adicionais Selecionados"];
+  if (backOption) adicionaisMapeados.push("0) Voltar");
+  return adicionaisMapeados.join("\n");
+};
 
+export const getProdutoSelected = (
+  selecionado: number | null,
+  opcoes: Produto[]
+) => {
+  if (!selecionado) return null;
+  return opcoes[selecionado - 1];
+};
 export const getCategoriaSelected = (
   selecionado: number | null,
   opcoes: Categoria[]
