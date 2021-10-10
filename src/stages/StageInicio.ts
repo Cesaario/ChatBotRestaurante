@@ -23,7 +23,7 @@ const OPTIONS: StageOption[] = [
 
 const StageInicio = (user: string, message?: string) => {
   if (!stageHandler.getUserOptionsShown(user, STAGE)) {
-    const optonsMessage = messageUtils.formatMessageWithOptions(
+    const optonsMessage = messageUtils.formatMessageWithStageOptions(
       messages.STAGE_INICIO,
       OPTIONS
     );

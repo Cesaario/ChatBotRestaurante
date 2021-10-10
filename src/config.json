@@ -6,7 +6,7 @@
         {
           "nome": "Pão de queijo",
           "desc": "Pão de queijo feito com queijo.",
-          "preço": 1.99,
+          "valor": 1.99,
           "adicionais": [
             {
               "nome": "Pernil",
@@ -21,12 +21,12 @@
         {
           "nome": "Coxinha",
           "desc": "Frango desfiado com bastante catupiry.",
-          "preço": 2.99
+          "valor": 2.99
         },
         {
           "nome": "Kibe",
           "desc": "Feito com carne moída de primeira",
-          "preço": 2.99
+          "valor": 2.99
         }
       ]
     },

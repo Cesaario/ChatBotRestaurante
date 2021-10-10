@@ -1,5 +1,5 @@
 export interface Restaurante {
-  categorias: Categoria;
+  categorias: Categoria[];
 }
 
 export interface Categoria {

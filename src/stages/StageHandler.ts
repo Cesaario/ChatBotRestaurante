@@ -1,6 +1,7 @@
 import { Stages } from "../constants/StagesEnum";
 import { StageOption } from "../interfaces/IStageOptions";
 import StageCardapioSelecionado from "./StageCardapioSelecionado";
+import StageCategoriaSelecionada from "./StageCategoriaSelecionada";
 import StageInicio from "./StageInicio";
 
 export const StageSolvers: Partial<
@@ -9,6 +10,7 @@ export const StageSolvers: Partial<
   //TODO: REMOVER PARTIAL QUANDO FINALIZAR
   [Stages.INICIO]: StageInicio,
   [Stages.CARDAPIO_SELECIONADO]: StageCardapioSelecionado,
+  [Stages.CATEGORIA_SELECIONADA]: StageCategoriaSelecionada,
 };
 
 export const StageOptionsShown: Partial<Record<Stages, Set<string>>> = {};
