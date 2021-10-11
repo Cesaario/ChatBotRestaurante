@@ -46,9 +46,18 @@ export const getProdutoSelected = (
   if (!selecionado) return null;
   return opcoes[selecionado - 1];
 };
+
 export const getCategoriaSelected = (
   selecionado: number | null,
   opcoes: Categoria[]
+) => {
+  if (!selecionado) return null;
+  return opcoes[selecionado - 1];
+};
+
+export const getAdicionalSelected = (
+  selecionado: number | null,
+  opcoes: Adicional[]
 ) => {
   if (!selecionado) return null;
   return opcoes[selecionado - 1];

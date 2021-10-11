@@ -5,6 +5,7 @@ import * as messageUtils from "../utils/messageUtils";
 import { Produto } from "../interfaces/IRestauranteConfig";
 import { StageOption } from "../interfaces/IStageOptions";
 import { setConfirmacaoProdutoSelected } from "./StageConfirmarProduto";
+import { setProdutoComAdicionaisSelected } from "./StageExibirAdicionais";
 
 const STAGE = Stages.PRODUTO_SELECIONADO;
 
@@ -37,8 +38,15 @@ const continuarSemAdicionaisHandler = (user: string) => {
   nextStageSolver(user);
 };
 
-const escolherAdicionaisHandler = () => {
-  console.log("ADICIONAL SELECIONADO");
+const escolherAdicionaisHandler = (user: string) => {
+  stageHandler.setUserOptionsNotShown(user, STAGE);
+  stageHandler.setUserStage(user, Stages.EXIBIR_ADICIONAIS);
+
+  const nextStageSolver = stageHandler.getUserStageSolver(user);
+  const produtoSelecionado = getProdutoSelected(user)!;
+
+  setProdutoComAdicionaisSelected(user, produtoSelecionado);
+  nextStageSolver(user);
 };
 
 const OPTIONS: StageOption[] = [

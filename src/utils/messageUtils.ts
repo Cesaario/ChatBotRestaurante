@@ -8,7 +8,11 @@ import {
 } from "../constants/Messages";
 import { client } from "../index";
 import { Cart } from "../interfaces/ICart";
-import { Categoria, Produto } from "../interfaces/IRestauranteConfig";
+import {
+  Adicional,
+  Categoria,
+  Produto,
+} from "../interfaces/IRestauranteConfig";
 
 import { StageOption } from "../interfaces/IStageOptions";
 import {
@@ -55,6 +59,17 @@ export const formatMessageWithProductsOptions = (
   );
 };
 
+export const formatMessageWithAdicionaisOptions = (
+  message: string,
+  options: Adicional[],
+  backOption = false
+) => {
+  return message.replace(
+    PLACEHOLDER_OPTIONS,
+    formatAdicionais(options, true, backOption)
+  );
+};
+
 export const formatMessageWithProductDetailsAndStageOptions = (
   message: string,
   product: Produto,
@@ -91,7 +106,18 @@ export const formatMessageWithOrderConfirmationAndStageOptions = (
   options: StageOption[]
 ) => {
   const mensagemFormatada = message
-    .replace(PLACEHOLDER_RESUMO_CARRINHO, "PLACEHOLDER_RESUMO_CARRINHO")
+    .replace(PLACEHOLDER_RESUMO_CARRINHO, "PLACEHOLDER_RESUMO_CARRINHO FAZEEER")
+    .replace(PLACEHOLDER_OPTIONS, formatOptions(options));
+  return mensagemFormatada;
+};
+
+export const formatMessageWithAdicionaisSelectedAndStageOptions = (
+  message: string,
+  adicionais: Adicional[],
+  options: StageOption[]
+) => {
+  const mensagemFormatada = message
+    .replace(PLACEHOLDER_ADICIONAIS, formatAdicionais(adicionais, false))
     .replace(PLACEHOLDER_OPTIONS, formatOptions(options));
   return mensagemFormatada;
 };

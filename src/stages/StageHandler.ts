@@ -3,7 +3,9 @@ import { StageOption } from "../interfaces/IStageOptions";
 import StageAdicionarConfirmarProdutos from "./StageAdicionarConfirmarProdutos";
 import StageCardapioSelecionado from "./StageCardapioSelecionado";
 import StageCategoriaSelecionada from "./StageCategoriaSelecionada";
+import StageConfirmarAdicionais from "./StageConfirmarAdicionais";
 import StageConfirmarProduto from "./StageConfirmarProduto";
+import StageExibirAdicionais from "./StageExibirAdicionais";
 import StageInicio from "./StageInicio";
 import StageProdutoSelecionado from "./StageProdutoSelecionado";
 
@@ -17,6 +19,8 @@ export const StageSolvers: Partial<
   [Stages.PRODUTO_SELECIONADO]: StageProdutoSelecionado,
   [Stages.CONFIRMAR_PRODUTO]: StageConfirmarProduto,
   [Stages.ADICIONAR_CONFIRMAR_PRODUTOS]: StageAdicionarConfirmarProdutos,
+  [Stages.EXIBIR_ADICIONAIS]: StageExibirAdicionais,
+  [Stages.CONFIRMAR_ADICIONAIS]: StageConfirmarAdicionais,
 };
 
 export const StageOptionsShown: Partial<Record<Stages, Set<string>>> = {};

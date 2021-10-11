@@ -47,7 +47,21 @@ export const STAGE_CONFIRMAR_PEDIDO = `
   ${PLACEHOLDER_RESUMO_CARRINHO}
 
   ${PLACEHOLDER_OPTIONS}
-`
+`;
+
+export const STAGE_EXIBIR_ADICIONAIS = `
+Qual adicional você deseja?
+
+${PLACEHOLDER_OPTIONS}
+`;
+
+export const STAGE_CONFIRMAR_ADICIONAIS = `
+Adicionais selecionados:
+
+${PLACEHOLDER_ADICIONAIS}
+
+${PLACEHOLDER_OPTIONS}
+`;
 
 export const OPCAO_INVALIDA = `
   Desculpe, essa opção não existe.
