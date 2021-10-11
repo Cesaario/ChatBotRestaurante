@@ -54,18 +54,27 @@ const OPTIONS: StageOption[] = [
   },
 ];
 
+const OPTIONS_SEM_ADICIONAIS: StageOption[] = [
+  {
+    number: 1,
+    title: "Continuar",
+    handler: continuarSemAdicionaisHandler,
+  }
+];
+
 const StageProdutoSelecionado = (user: string, message?: string) => {
   const produtoSelecionado = getProdutoSelected(user);
   if (!produtoSelecionado) {
     messageUtils.sendTextMessage(user, messages.ERRO_GENERICO);
     return;
   }
+  const possuiAdicionais = produtoSelecionado.adicionais?.length;
   if (!stageHandler.getUserOptionsShown(user, STAGE)) {
     const optionsMessage =
       messageUtils.formatMessageWithProductDetailsAndStageOptions(
         messages.STAGE_PRODUTO_SELECIONADO,
         produtoSelecionado,
-        OPTIONS,
+        possuiAdicionais ? OPTIONS : OPTIONS_SEM_ADICIONAIS,
         true
       );
     messageUtils.sendTextMessage(user, optionsMessage);

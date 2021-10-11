@@ -34,7 +34,7 @@ export const formatAdicionais = (
             return `${index + 1}) ${adicional.nome} (${adicional.valor})`;
           else return `- ${adicional.nome} (${adicional.valor})`;
         })
-      : ["Sem adicionais Selecionados"];
+      : ["Sem adicionais selecionados"];
   if (backOption) adicionaisMapeados.push("0) Voltar");
   return adicionaisMapeados.join("\n");
 };
