@@ -50,9 +50,9 @@ export const gerarResumoCarrinhoComValoresSemAdicionais = (carrinho: Cart) => {
 
 export const gerarResumoCarrinhoSemValoresComAdicionais = (carrinho: Cart) => {
   return carrinho.produtos.map(produto => {
-    const resumoProduto = `${produto.valor}\n`;
+    const resumoProduto = `-${produto.nome}\n`;
     const resumoAdicionais = produto.adicionais?.map(adicional => {
-      return `\t${adicional.nome}`;
+      return `\t-${adicional.nome}`;
     }).join("\n") || "";
     return resumoProduto.concat(resumoAdicionais);
   }).join("\n");

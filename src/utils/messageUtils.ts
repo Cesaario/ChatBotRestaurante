@@ -134,7 +134,7 @@ export const getOptionSelected = (message?: string) => {
 };
 
 export const sendTextMessage = (user: string, message: string) => {
-  client.sendText(user, message);
+  return client.sendText(user, message);
 };
 
 export const isBackOption = (option: number) => option === 0;

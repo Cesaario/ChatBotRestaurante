@@ -86,15 +86,15 @@ export const TAXA_ENTREGA = `
 `;
 
 export const FORMA_PAGAMENTO = `
-  Qual será o método de pagamento?
+Qual será o método de pagamento?
 
-  ${PLACEHOLDER_OPTIONS}
+${PLACEHOLDER_OPTIONS}
 `;
 
 export const CONFIRMAR_PEDIDO = `
-  Deseja confirmar ou descartar o seu pedido?
+Deseja confirmar ou descartar o seu pedido?
   
-  ${PLACEHOLDER_OPTIONS}
+${PLACEHOLDER_OPTIONS}
 `;
 
 export const RESUMO_PEDIDO = `

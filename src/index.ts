@@ -4,7 +4,7 @@ import { messageHandler } from "./messageHandler";
 export let client: Whatsapp;
 
 const inicializar = async () => {
-  const createdClient = await create("TESTE");
+  const createdClient = await create("ChatBot");
   client = createdClient;
   iniciarFuncionalidades();
 };

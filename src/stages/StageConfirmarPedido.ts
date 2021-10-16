@@ -55,7 +55,7 @@ const OPTIONS: StageOption[] = [
 const StageConfirmarPedido = (user: string, message?: string) => {
   if (!stageHandler.getUserOptionsShown(user, STAGE)) {
     const optionsMessage = messageUtils.formatMessageWithStageOptions(
-      messages.FORMA_PAGAMENTO,
+      messages.CONFIRMAR_PEDIDO,
       OPTIONS
     );
     messageUtils.sendTextMessage(user, optionsMessage);

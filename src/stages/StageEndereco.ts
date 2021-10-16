@@ -18,7 +18,7 @@ export const getEndereco = (user: string) => {
   return EnderecoSelecionado.get(user);
 };
 
-const StageEndereco = (user: string, message?: string) => {
+const StageEndereco = async (user: string, message?: string) => {
   if (!stageHandler.getUserOptionsShown(user, STAGE)) {
     messageUtils.sendTextMessage(user, messages.STAGE_ENDERECO);
     stageHandler.setUserOptionsShown(user, STAGE);
@@ -34,7 +34,7 @@ const StageEndereco = (user: string, message?: string) => {
   
   const taxaEntrega = calcularTaxaEntrega(getEndereco(user)!);
   const taxaEntregaFormatada = formatarValor(taxaEntrega);
-  messageUtils.sendTextMessage(user, messages.TAXA_ENTREGA.replace(messages.PLACEHOLDER_VALOR, taxaEntregaFormatada))
+  await messageUtils.sendTextMessage(user, messages.TAXA_ENTREGA.replace(messages.PLACEHOLDER_VALOR, taxaEntregaFormatada))
 
   setTaxaEntrega(user, taxaEntrega);
 

@@ -8,7 +8,10 @@ import { getUserCart } from "../cart/CartHandler";
 const STAGE = Stages.ADICIONAR_CONFIRMAR_PRODUTOS;
 
 const concluirPedidoHandler = (user: string) => {
-  console.log("SÓ PEDIR O ENDEREÇO AGORA MERMÃO");
+  stageHandler.setUserOptionsNotShown(user, STAGE);
+  stageHandler.setUserStage(user, Stages.ENDERECO);
+  const nextStageSolver = stageHandler.getUserStageSolver(user);
+  nextStageSolver(user);
 };
 
 const adicionarMaisHandler = (user: string) => {
