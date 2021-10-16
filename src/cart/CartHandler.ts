@@ -12,3 +12,7 @@ export const addProductToCart = (user: string, produto: Produto) => {
   const { produtos } = getUserCart(user);
   produtos.push(produto);
 };
+
+export const setTaxaEntrega = (user: string, valor: number) => {
+  getUserCart(user).taxaEntrega = valor;
+}

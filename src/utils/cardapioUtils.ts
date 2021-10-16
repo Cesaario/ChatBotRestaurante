@@ -1,9 +1,11 @@
 import { restaurante } from "../config/configHandler";
+import { Cart } from "../interfaces/ICart";
 import {
   Adicional,
   Categoria,
   Produto,
 } from "../interfaces/IRestauranteConfig";
+import { formatarValor } from "./moneyUtils";
 
 export const formatCategorias = (
   categorias: Categoria[],
@@ -17,7 +19,7 @@ export const formatCategorias = (
 };
 export const formatProduto = (produtos: Produto[], backOption = false) => {
   const categoriasMapeadas = produtos.map(
-    (produto, index) => `${index + 1}) ${produto.nome} (${produto.valor})`
+    (produto, index) => `${index + 1}) ${produto.nome} (${formatarValor(produto.valor)})`
   );
   if (backOption) categoriasMapeadas.push("0) Voltar");
   return categoriasMapeadas.join("\n");
@@ -31,13 +33,30 @@ export const formatAdicionais = (
     adicionais && adicionais.length > 0
       ? adicionais.map((adicional, index) => {
           if (options)
-            return `${index + 1}) ${adicional.nome} (${adicional.valor})`;
-          else return `- ${adicional.nome} (${adicional.valor})`;
+            return `${index + 1}) ${adicional.nome} (${formatarValor(adicional.valor)})`;
+          else return `- ${adicional.nome} (${formatarValor(adicional.valor)})`;
         })
       : ["Sem adicionais selecionados"];
   if (backOption) adicionaisMapeados.push("0) Voltar");
   return adicionaisMapeados.join("\n");
 };
+
+export const gerarResumoCarrinhoComValoresSemAdicionais = (carrinho: Cart) => {
+  return carrinho.produtos.map(produto => {
+    const valorProdutoFormatado = formatarValor(calcularValorProdutoComAdicionais(produto));
+    return `- ${produto.nome} (${valorProdutoFormatado})`;
+  }).join("\n");
+}
+
+export const gerarResumoCarrinhoSemValoresComAdicionais = (carrinho: Cart) => {
+  return carrinho.produtos.map(produto => {
+    const resumoProduto = `${produto.valor}\n`;
+    const resumoAdicionais = produto.adicionais?.map(adicional => {
+      return `\t${adicional.nome}`;
+    }).join("\n") || "";
+    return resumoProduto.concat(resumoAdicionais);
+  }).join("\n");
+}
 
 export const getProdutoSelected = (
   selecionado: number | null,
@@ -66,3 +85,8 @@ export const getAdicionalSelected = (
 export const getCategorias = () => {
   return restaurante.categorias;
 };
+
+export const calcularValorProdutoComAdicionais = (produto: Produto) => {
+  const valorAdcionais = produto.adicionais?.reduce((acc, curr) => acc += curr.valor, 0) || 0;
+  return produto.valor + valorAdcionais;
+}

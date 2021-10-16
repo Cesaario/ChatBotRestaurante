@@ -15,11 +15,15 @@ import {
 } from "../interfaces/IRestauranteConfig";
 
 import { StageOption } from "../interfaces/IStageOptions";
+import { Pagamento } from "../stages/StagePagamento";
 import {
+  calcularValorProdutoComAdicionais,
   formatAdicionais,
   formatCategorias,
   formatProduto,
+  gerarResumoCarrinhoComValoresSemAdicionais,
 } from "./cardapioUtils";
+import { formatarValor } from "./moneyUtils";
 
 export const formatOptions = (options: StageOption[], backOption = false) => {
   const opcoesMapeadas = options.map(
@@ -95,7 +99,7 @@ export const formatMessageWithProductConfirmationAndStageOptions = (
       PLACEHOLDER_ADICIONAIS,
       formatAdicionais(product.adicionais, false, false)
     )
-    .replace(PLACEHOLDER_VALOR, "CALCULAR VALOR")
+    .replace(PLACEHOLDER_VALOR, formatarValor(calcularValorProdutoComAdicionais(product)))
     .replace(PLACEHOLDER_OPTIONS, formatOptions(options, backOption));
   return mensagemFormatada;
 };
@@ -106,7 +110,7 @@ export const formatMessageWithOrderConfirmationAndStageOptions = (
   options: StageOption[]
 ) => {
   const mensagemFormatada = message
-    .replace(PLACEHOLDER_RESUMO_CARRINHO, "PLACEHOLDER_RESUMO_CARRINHO FAZEEER")
+    .replace(PLACEHOLDER_RESUMO_CARRINHO, gerarResumoCarrinhoComValoresSemAdicionais(cart))
     .replace(PLACEHOLDER_OPTIONS, formatOptions(options));
   return mensagemFormatada;
 };
@@ -122,6 +126,8 @@ export const formatMessageWithAdicionaisSelectedAndStageOptions = (
   return mensagemFormatada;
 };
 
+export const formatFormaPagamento = (pagemento: Pagamento) => `${pagemento.tipo} (${pagemento.detalhes})`
+ 
 export const getOptionSelected = (message?: string) => {
   if (message == null) return null;
   return Number(message);

@@ -4,6 +4,10 @@ export const PLACEHOLDER_DETALHES_PRODUTO = "{DETALHES_PRODUTO}";
 export const PLACEHOLDER_ADICIONAIS = "{ADICIONAIS}";
 export const PLACEHOLDER_VALOR = "{VALOR}";
 export const PLACEHOLDER_RESUMO_CARRINHO = "{RESUMO_CARRINHO}";
+export const PLACEHOLDER_NUMERO_CLIENTE = "{PLACEHOLDER_NUMERO_CLIENTE}";
+export const PLACEHOLDER_RESUMO_PEDIDO = "{PLACEHOLDER_RESUMO_PEDIDO}";
+export const PLACEHOLDER_ENDERECO = "{PLACEHOLDER_ENDERECO}";
+export const PLACEHOLDER_FORMA_PAGAMENTO = "{PLACEHOLDER_FORMA_PAGAMENTO}";
 
 export const STAGE_INICIO = `
 Olá! Seja bem vindo(a) ao Restaurante do Sabor!
@@ -35,18 +39,20 @@ export const STAGE_CONFIRMAR_PRODUTO = `
 Deseja confirmar o produto?
 
 Produto: ${PLACEHOLDER_NOME_PRODUTO}
-Adicionais: ${PLACEHOLDER_ADICIONAIS}
+Adicionais:
+${PLACEHOLDER_ADICIONAIS}
+
 Total: ${PLACEHOLDER_VALOR}
 
 ${PLACEHOLDER_OPTIONS}
 `;
 
 export const STAGE_CONFIRMAR_PEDIDO = `
-  Confirmar ou adicionar mais?
+Deseja confirmar o pedido ou adicionar mais itens?
 
-  ${PLACEHOLDER_RESUMO_CARRINHO}
+${PLACEHOLDER_RESUMO_CARRINHO}
 
-  ${PLACEHOLDER_OPTIONS}
+${PLACEHOLDER_OPTIONS}
 `;
 
 export const STAGE_EXIBIR_ADICIONAIS = `
@@ -63,8 +69,55 @@ ${PLACEHOLDER_ADICIONAIS}
 ${PLACEHOLDER_OPTIONS}
 `;
 
+export const STAGE_ENDERECO = `
+Qual o seu endereço?
+`;
+
 export const OPCAO_INVALIDA = `
   Desculpe, essa opção não existe.
+`;
+
+export const ENDERECO_INVALIDO = `
+  Por favor, digite um endereço válido.
+`;
+
+export const TAXA_ENTREGA = `
+  Taxa de entrega: ${PLACEHOLDER_VALOR}
+`;
+
+export const FORMA_PAGAMENTO = `
+  Qual será o método de pagamento?
+
+  ${PLACEHOLDER_OPTIONS}
+`;
+
+export const CONFIRMAR_PEDIDO = `
+  Deseja confirmar ou descartar o seu pedido?
+  
+  ${PLACEHOLDER_OPTIONS}
+`;
+
+export const RESUMO_PEDIDO = `
+    *RESUMO PEDIDO*
+
+Número cliente:
+${PLACEHOLDER_NUMERO_CLIENTE}
+
+Pedido:
+${PLACEHOLDER_RESUMO_PEDIDO}
+
+Endereço:
+${PLACEHOLDER_ENDERECO}
+
+Forma de pagamento:
+${PLACEHOLDER_FORMA_PAGAMENTO}
+
+Valor total:
+${PLACEHOLDER_VALOR}
+`
+
+export const SUCESSO = `
+Pedido realizado com sucesso!
 `;
 
 export const ERRO_GENERICO = `Oops... Ocorreu um erro.`;

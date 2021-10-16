@@ -5,8 +5,10 @@ import StageCardapioSelecionado from "./StageCardapioSelecionado";
 import StageCategoriaSelecionada from "./StageCategoriaSelecionada";
 import StageConfirmarAdicionais from "./StageConfirmarAdicionais";
 import StageConfirmarProduto from "./StageConfirmarProduto";
+import StageEndereco from "./StageEndereco";
 import StageExibirAdicionais from "./StageExibirAdicionais";
 import StageInicio from "./StageInicio";
+import StagePagamento from "./StagePagamento";
 import StageProdutoSelecionado from "./StageProdutoSelecionado";
 
 export const StageSolvers: Partial<
@@ -21,6 +23,8 @@ export const StageSolvers: Partial<
   [Stages.ADICIONAR_CONFIRMAR_PRODUTOS]: StageAdicionarConfirmarProdutos,
   [Stages.EXIBIR_ADICIONAIS]: StageExibirAdicionais,
   [Stages.CONFIRMAR_ADICIONAIS]: StageConfirmarAdicionais,
+  [Stages.ENDERECO]: StageEndereco,
+  [Stages.PAGAMENTO]: StagePagamento,
 };
 
 export const StageOptionsShown: Partial<Record<Stages, Set<string>>> = {};
