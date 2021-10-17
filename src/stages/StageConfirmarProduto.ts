@@ -44,12 +44,12 @@ const produtoConfirmacaoBackOptionHandler = (user: string) => {
 const OPTIONS: StageOption[] = [
   {
     number: 1,
-    title: "Confirmar",
+    title: "Confirmar produto",
     handler: confirmarHandler,
   },
   {
     number: 2,
-    title: "Cancelar",
+    title: "Cancelar produto",
     handler: cancelarHandler,
   },
 ];

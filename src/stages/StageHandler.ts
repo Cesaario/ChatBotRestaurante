@@ -6,6 +6,7 @@ import StageCategoriaSelecionada from "./StageCategoriaSelecionada";
 import StageConfirmarAdicionais from "./StageConfirmarAdicionais";
 import StageConfirmarPedido from "./StageConfirmarPedido";
 import StageConfirmarProduto from "./StageConfirmarProduto";
+import StageEditarObservacao from "./StageEditarObservacao";
 import StageEndereco from "./StageEndereco";
 import StageExibirAdicionais from "./StageExibirAdicionais";
 import StageInicio from "./StageInicio";
@@ -27,6 +28,7 @@ export const StageSolvers: Partial<
   [Stages.ENDERECO]: StageEndereco,
   [Stages.PAGAMENTO]: StagePagamento,
   [Stages.CONFIRMAR_CANCELAR_PEDIDO]: StageConfirmarPedido,
+  [Stages.EDITAR_OBSERVACAO]: StageEditarObservacao,
 };
 
 export const StageOptionsShown: Partial<Record<Stages, Set<string>>> = {};

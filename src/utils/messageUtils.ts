@@ -1,9 +1,16 @@
 import {
   PLACEHOLDER_ADICIONAIS,
+  PLACEHOLDER_BAIRRO,
   PLACEHOLDER_DETALHES_PRODUTO,
+  PLACEHOLDER_EMAIL,
+  PLACEHOLDER_HORARIOS,
+  PLACEHOLDER_LOGRADOURO,
   PLACEHOLDER_NOME_PRODUTO,
+  PLACEHOLDER_NUMERO,
+  PLACEHOLDER_OBSERVACAO,
   PLACEHOLDER_OPTIONS,
   PLACEHOLDER_RESUMO_CARRINHO,
+  PLACEHOLDER_TELEFONE,
   PLACEHOLDER_VALOR,
 } from "../constants/Messages";
 import { client } from "../index";
@@ -11,6 +18,9 @@ import { Cart } from "../interfaces/ICart";
 import {
   Adicional,
   Categoria,
+  Contato,
+  Endereco,
+  HorarioFuncionamento,
   Produto,
 } from "../interfaces/IRestauranteConfig";
 
@@ -99,8 +109,12 @@ export const formatMessageWithProductConfirmationAndStageOptions = (
       PLACEHOLDER_ADICIONAIS,
       formatAdicionais(product.adicionais, false, false)
     )
-    .replace(PLACEHOLDER_VALOR, formatarValor(calcularValorProdutoComAdicionais(product)))
-    .replace(PLACEHOLDER_OPTIONS, formatOptions(options, backOption));
+    .replace(
+      PLACEHOLDER_VALOR,
+      formatarValor(calcularValorProdutoComAdicionais(product))
+    )
+    .replace(PLACEHOLDER_OPTIONS, formatOptions(options, backOption))
+    .replace(PLACEHOLDER_OBSERVACAO, product.observacao || "Nenhuma");
   return mensagemFormatada;
 };
 
@@ -110,7 +124,10 @@ export const formatMessageWithOrderConfirmationAndStageOptions = (
   options: StageOption[]
 ) => {
   const mensagemFormatada = message
-    .replace(PLACEHOLDER_RESUMO_CARRINHO, gerarResumoCarrinhoComValoresSemAdicionais(cart))
+    .replace(
+      PLACEHOLDER_RESUMO_CARRINHO,
+      gerarResumoCarrinhoComValoresSemAdicionais(cart)
+    )
     .replace(PLACEHOLDER_OPTIONS, formatOptions(options));
   return mensagemFormatada;
 };
@@ -126,8 +143,35 @@ export const formatMessageWithAdicionaisSelectedAndStageOptions = (
   return mensagemFormatada;
 };
 
-export const formatFormaPagamento = (pagemento: Pagamento) => `${pagemento.tipo} (${pagemento.detalhes})`
- 
+export const formatEndereco = (message: string, endereco: Endereco) => {
+  return message
+    .replace(PLACEHOLDER_LOGRADOURO, endereco.logradouro)
+    .replace(PLACEHOLDER_BAIRRO, endereco.bairro)
+    .replace(PLACEHOLDER_NUMERO, String(endereco.numero));
+};
+
+export const formatHorarioFuncionamento = (
+  message: string,
+  horarios: HorarioFuncionamento[]
+) => {
+  const horariosFormatados = horarios
+    .map(
+      (horario) =>
+        `*${horario.dia}:* ${horario.abertura} até ${horario.fechamento}`
+    )
+    .join("\n");
+  return message.replace(PLACEHOLDER_HORARIOS, horariosFormatados);
+};
+
+export const formatContato = (message: string, contato: Contato) => {
+  return message
+    .replace(PLACEHOLDER_EMAIL, contato.email)
+    .replace(PLACEHOLDER_TELEFONE, contato.telefone);
+};
+
+export const formatFormaPagamento = (pagemento: Pagamento) =>
+  `${pagemento.tipo} (${pagemento.detalhes})`;
+
 export const getOptionSelected = (message?: string) => {
   if (message == null) return null;
   return Number(message);

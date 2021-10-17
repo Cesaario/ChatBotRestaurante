@@ -1,4 +1,51 @@
 {
+  "endereco": {
+    "cep": 30000000,
+    "logradouro": "Avenida Brasil",
+    "numero": 1000,
+    "bairro": "Centro"
+  },
+  "horarioDeFuncionamento": [
+    {
+      "dia": "Domingo",
+      "abertura": "12:00",
+      "fechamento": "23:00"
+    },
+    {
+      "dia": "Segunda-Feira",
+      "abertura": "12:00",
+      "fechamento": "23:00"
+    },
+    {
+      "dia": "Terça-Feira",
+      "abertura": "12:00",
+      "fechamento": "23:00"
+    },
+    {
+      "dia": "Quarta-Feira",
+      "abertura": "12:00",
+      "fechamento": "23:00"
+    },
+    {
+      "dia": "Quinta-Feira",
+      "abertura": "12:00",
+      "fechamento": "23:00"
+    },
+    {
+      "dia": "Sexta-Feira",
+      "abertura": "12:00",
+      "fechamento": "23:00"
+    },
+    {
+      "dia": "Sábado",
+      "abertura": "12:00",
+      "fechamento": "23:00"
+    }
+  ],
+  "contato": {
+    "telefone": "(31) 3333-3333",
+    "email": "restaurantedosabor@gmail.com"
+  },
   "categorias": [
     {
       "nome": "Salgados",

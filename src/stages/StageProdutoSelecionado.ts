@@ -43,11 +43,19 @@ const escolherAdicionaisHandler = (user: string) => {
   stageHandler.setUserStage(user, Stages.EXIBIR_ADICIONAIS);
 
   const nextStageSolver = stageHandler.getUserStageSolver(user);
-  const produtoSelecionado = getProdutoSelected(user)!;
+  const produtoSelecionado = { ...getProdutoSelected(user)! };
+  produtoSelecionado.adicionais = [];
 
   setProdutoComAdicionaisSelected(user, produtoSelecionado);
   nextStageSolver(user);
 };
+
+const editarObservacao = (user: string) => {
+  stageHandler.setUserOptionsNotShown(user, STAGE);
+  stageHandler.setUserStage(user, Stages.EDITAR_OBSERVACAO);
+  const nextStageSolver = stageHandler.getUserStageSolver(user);
+  nextStageSolver(user);
+}
 
 const OPTIONS: StageOption[] = [
   {
@@ -59,6 +67,11 @@ const OPTIONS: StageOption[] = [
     number: 2,
     title: "Escolher adicionais",
     handler: escolherAdicionaisHandler,
+  },
+  {
+    number: 3,
+    title: "Editar observacao",
+    handler: editarObservacao,
   },
 ];
 

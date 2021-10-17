@@ -8,6 +8,13 @@ export const PLACEHOLDER_NUMERO_CLIENTE = "{PLACEHOLDER_NUMERO_CLIENTE}";
 export const PLACEHOLDER_RESUMO_PEDIDO = "{PLACEHOLDER_RESUMO_PEDIDO}";
 export const PLACEHOLDER_ENDERECO = "{PLACEHOLDER_ENDERECO}";
 export const PLACEHOLDER_FORMA_PAGAMENTO = "{PLACEHOLDER_FORMA_PAGAMENTO}";
+export const PLACEHOLDER_OBSERVACAO = "{PLACEHOLDER_OBSERVACAO}";
+export const PLACEHOLDER_TELEFONE = "{PLACEHOLDER_TELEFONE}";
+export const PLACEHOLDER_LOGRADOURO = "{PLACEHOLDER_LOGRADOURO}";
+export const PLACEHOLDER_NUMERO = "{PLACEHOLDER_TELEFONE}";
+export const PLACEHOLDER_BAIRRO = "{PLACEHOLDER_TELEFONE}";
+export const PLACEHOLDER_HORARIOS = "{PLACEHOLDER_TELEFONE}";
+export const PLACEHOLDER_EMAIL = "{PLACEHOLDER_TELEFONE}";
 
 export const STAGE_INICIO = `
 Olá! Seja bem vindo(a) ao Restaurante do Sabor!
@@ -41,6 +48,7 @@ Deseja confirmar o produto?
 Produto: ${PLACEHOLDER_NOME_PRODUTO}
 Adicionais:
 ${PLACEHOLDER_ADICIONAIS}
+Observação: ${PLACEHOLDER_OBSERVACAO}
 
 Total: ${PLACEHOLDER_VALOR}
 
@@ -118,6 +126,30 @@ ${PLACEHOLDER_VALOR}
 
 export const SUCESSO = `
 Pedido realizado com sucesso!
+`;
+
+export const ENDERECO = `
+Endereço do estabelecimento:
+*${PLACEHOLDER_LOGRADOURO}, ${PLACEHOLDER_NUMERO} - ${PLACEHOLDER_BAIRRO}*
+`;
+
+export const HORARIO_FUNCIOMENTO = `
+Horário de funcionamento do estabelecimento:
+
+${PLACEHOLDER_HORARIOS}
+`;
+
+export const CONTATO = `
+*E-Mail:* ${PLACEHOLDER_EMAIL}
+*Telefone:* ${PLACEHOLDER_TELEFONE}
+`;
+
+export const OBSERVACAO = `
+Digite a observação do produto
+`
+
+export const OBSERVACAO_ATUALIZADA = `
+Observação atualizada!
 `;
 
 export const ERRO_GENERICO = `Oops... Ocorreu um erro.`;
